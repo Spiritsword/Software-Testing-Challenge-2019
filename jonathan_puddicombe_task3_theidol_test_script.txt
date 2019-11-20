@@ -1,0 +1,128 @@
+test("Test Case: " + r.id, async t => { //START:test 
+ 
+	await t.maximizeWindow().click(".cookieconsent-gotit-button") //full screen and close popup 
+ 
+    	if (r.petType === "cat") {
+		await t.click("label[for='drpCoverType_cat'] ");
+    	} else if (r.petType === "dog") {
+		await t.click("label[for='drpCoverType_dog']");
+    	} 
+ 
+    	await t.typeText("input[name='nameofpet']", r.petName); 
+ 
+    	await t.typeText("input[name='purchasePrice']", r.petPrice); 
+ 
+    /* START: Script */ 
+ 
+     	if (r.petBreedType === "pedigree"){
+		await t.click("label[for='breedType_pedigree']");
+    	} else if (r.petBreedType === "mixed"){
+		await t.click("label[for='breedType_mix']");
+    	} else if (r.petBreedType === "mongrel"){
+		await t.click("label[for='breedType_mongrel']");
+    	}
+
+    	await t.typeText("input[name='breed']", r.petBreed);
+
+     	if (r.petSize === "small"){
+		await t.click("label[for='dog_small']");
+    	} else if (r.petpetSize === "medium"){
+		await t.click("label[for='dog_medium']");
+    	} else if (r.petSize === "large"){
+		await t.click("label[for='dog_large']");
+    	}
+
+    /* END: Script */ 
+ 
+    	await t.click("select[name='petbirth_month']")
+		.click(Selector("select[name='petbirth_month']").find("option").withText(r.petMonth));
+ 
+    	await t.click("select[name='petbirth_year']")
+		.click(Selector("select[name='petbirth_year']").find("option").withText(r.petYear));
+ 
+    	if (r.petGender === "male"){
+		await t.click("label[for='petGender_m']");
+    	} else if (r.petGender === "female"){
+		await t.click("label[for='petGender_f']");
+    	}
+ 
+    	if (r.petVaccinations === "yes"){
+		await t.click("label[for='petVaccinations_1']");
+    	} else if (r.petVaccinations === "no"){
+		await t.click("label[for='petVaccinations_0']");
+	}
+ 
+    /* START: Script */ 
+ 
+    	if (r.petNeutered === "yes"){
+		await t.click("label[for='petNeutered_1']");
+    	} else if (r.petNeutered === "no"){
+		await t.click("label[for='petNeutered_0']");
+    	}
+ 
+    	if (r.petChipped === "yes"){
+		await t.click("label[for='petChipped_1']");
+    	} else if (r.petChipped === "no"){
+		await t.click("label[for='petChipped_0']");
+	}
+
+    	if (r.petMedical === "yes"){
+		await t.click("label[for='petMedical_1']");
+    	} else if (r.petMedical === "no"){
+		await t.click("label[for='petMedical_0']");
+    	}
+ 
+    	if (r.showAccidentOnly === "yes"){
+		await t.click("label[for='showaccidentonlyYes']");
+    	} else if (r.showAccidentOnly === "no"){
+		await t.click("label[for='showaccidentonlyNo']");
+    	}
+
+    	if (r.policy === "lifetime"){
+		await t.click("label[for='lifetimePolicy']");
+    	} else if (r.policy === "maxBenefit"){
+		await t.click("label[for='maxBenefitPolicy']");
+    	} else if (r.policy === "timeLimited"){
+		await t.click("label[for='timeLimitedPolicy']");
+    	}
+
+    	await t.click("select[name='title']")
+		.click(Selector("select[name='title']").find("option").withText(r.title));
+
+	await t.typeText("input[name='firstname']", r.firstname);
+
+	await t.typeText("input[name='surname']", r.surname);
+
+    	await t.click("select[name='birth_day_1']")
+		.click(Selector("select[name='birth_day_1']").find("option").withText(r.ownerDay));
+
+    	await t.click("select[name='birth_month_1']")
+		.click(Selector("select[name='birth_month_1']").find("option").withText(r.ownerMonth));
+
+    	await t.click("select[name='birth_year_1']")
+		.click(Selector("select[name='birth_year_1']").find("option").withText(r.ownerYear));
+
+	await t.typeText("input[name='email']", r.email); 
+
+	await t.typeText("input[name='addressline1']", r.addressLine1);
+ 
+	await t.typeText("input[name='addressline2']", r.addressLine2);
+
+	await t.typeText("input[name='addressline3']", r.addressLine3);
+
+	await t.typeText("input[name='addressline4']", r.addressLine4);
+
+	await t.typeText("input[name='addressline5']", r.addressLine5);
+
+	await t.typeText("input[name='addresspostcode']", r.addrespostcode);
+
+ 
+    /* END: Script */
+ 
+    	await t.typeText("input[id='startdate']",r.policyStart); 
+ 
+    	await t.click("button[class='generic_button nextBtn']"); 
+ 
+    	await t.expect(Selector("a[id='MoreInfoLink_1']").exists).ok("More link not found");
+ 
+	}); //END:test 
